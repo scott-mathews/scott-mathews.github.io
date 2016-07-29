@@ -5,6 +5,7 @@ header {
   background-repeat: no-repeat;
   background-size: cover;
   line-height: 1.2;
+  max-width: none;
   padding: 10vw 2em;
   text-align: center;
 }
@@ -46,7 +47,7 @@ body {
   font-family: "Helvetica", "Arial", sans-serif;
   line-height: 1.5;
   padding: 4em 1em;
-  color: #566b78;
+  color: #333;
 }
 
 h2 {
