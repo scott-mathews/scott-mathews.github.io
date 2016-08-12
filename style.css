@@ -175,7 +175,7 @@ header {
 }
 
 header h1 {
-  color: white;
+  color: black;
   font-size: 2.5em;
   font-weight: 300;
 }
@@ -218,7 +218,6 @@ header a:hover {
 html a.button {
   border: 1px solid #d8dee9;
   border-radius: 290486px;
-  color: #b0bfc7;
   padding: 1em 1.5em;
   text-align: center;
   text-decoration: none;
