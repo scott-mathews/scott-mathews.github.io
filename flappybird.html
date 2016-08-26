@@ -5,13 +5,21 @@
     <style>
      * { padding: 0; margin: 0; }
      canvas { background: #eee; display: block; margin: 0 auto }
+     button { display:block; margin: 0 auto }
     </style>
   </head>
 
   <body>
     <canvas id="flappybirdCanvas" width="480" height="320"></canvas>
+    <button id="restart">Restart Game</button>
 
     <script>
+
+     rs = document.getElementById("restart")
+     rs.onclick=function(){
+       document.location.reload()
+     }
+
      var canvas = document.getElementById("flappybirdCanvas");
      var ctx = canvas.getContext("2d");
 
@@ -89,8 +97,9 @@
 
      // Game Over
      function gameOver () {
-       alert('Game Over! Score: ' + score)
-       document.location.reload()
+       ctx.font="24px Arial"
+       ctx.fillStyle="#FF0000"
+       ctx.fillText('Game Over! ' + score + ' Points!', canvas.width/2-140, canvas.height/2)
      }
 
      // Score
@@ -115,12 +124,15 @@
      function draw() {
        ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+
        drawWalls();
-       moveWall();
        drawBird();
-       moveBird();
-       checkScore();
        drawScore();
+       if (!collide){
+       moveWall();
+       moveBird();
+       }
+       checkScore();
 
        collisionDetection();
        if (collide) {
