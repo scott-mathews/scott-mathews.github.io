@@ -1,0 +1,138 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Flappy bird</title>
+    <style>
+     * { padding: 0; margin: 0; }
+     canvas { background: #eee; display: block; margin: 0 auto }
+    </style>
+  </head>
+
+  <body>
+    <canvas id="flappybirdCanvas" width="480" height="320"></canvas>
+
+    <script>
+     var canvas = document.getElementById("flappybirdCanvas");
+     var ctx = canvas.getContext("2d");
+
+     // WALLS
+
+     var wallWidth = 40
+     var walldx = -6
+     var wallgap = 100
+     var wallbuffer = 100
+
+     var walls = [{x: canvas.width, y: canvas.height/2}]
+     function drawWalls() {
+       for (var i = 0; i<walls.length; i++){
+         ctx.beginPath()
+         ctx.rect(walls[i].x, walls[i].y+wallgap/2, wallWidth, canvas.height)
+         ctx.rect(walls[i].x, walls[i].y-wallgap/2, wallWidth, -canvas.height)
+         ctx.fillStyle = "#000000"
+         ctx.fill()
+         ctx.closePath()
+       }
+     }
+
+     function moveWall() {
+       // move wall
+       for (var i = 0; i<walls.length;i++) {
+         if (walls[i].x < 0-wallWidth){
+           walls.pop()
+           walls.push({x: canvas.width, y:(Math.random()*(canvas.height-wallbuffer - wallbuffer)) + wallbuffer})
+         }
+         walls[i].x += walldx
+       }
+     }
+
+     // BIRD
+
+     var bird = {
+       radius: 10,
+       accel: 0.2,
+       dy: -1,
+       x: 50,
+       y: canvas.height/2
+     }
+
+     function drawBird() {
+       ctx.beginPath()
+       ctx.arc(bird.x, bird.y, bird.radius, 0, Math.PI*2)
+       ctx.fillStyle = '#000000'
+       ctx.fill()
+       ctx.closePath()
+     }
+
+     function moveBird() {
+       bird.dy += bird.accel
+       bird.y  += bird.dy
+     }
+
+     function onClickHandler(e) {
+       bird.dy = -6
+     }
+
+     // Collisions
+     var collide = false;
+
+     function collisionDetection(){
+       for (var i = 0; i<walls.length; i++){
+         if(bird.x > walls[i].x && bird.x < walls[i].x + wallWidth) {
+           if(bird.y > walls[i].y+wallgap/2 || bird.y < walls[i].y-wallgap/2)
+             collide = true;
+         } 
+       }
+       if (bird.y > canvas.height) {
+         collide = true;
+       }
+     }
+
+     // Game Over
+     function gameOver () {
+       alert('Game Over! Score: ' + score)
+       document.location.reload()
+     }
+
+     // Score
+     var score = 0
+
+     function drawScore() {
+       ctx.font="16px Arial"
+       ctx.fillStyle="#000000"
+       ctx.fillText('Score: ' + score, 8, 20)
+     }
+
+     function checkScore() {
+       for (var i = 0; i<walls.length; i++){
+         if (bird.x > walls[i].x+walldx && bird.x < walls[i].x) {
+           score++
+         }
+       }
+     }
+
+     // DRAW
+
+     function draw() {
+       ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+       drawWalls();
+       moveWall();
+       drawBird();
+       moveBird();
+       checkScore();
+       drawScore();
+
+       collisionDetection();
+       if (collide) {
+         gameOver()
+       }
+
+       requestAnimationFrame(draw);
+     }
+
+     document.onclick = onClickHandler;
+
+     draw()
+    </script>
+  </body>
+</html>
