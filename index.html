@@ -1,27 +1,38 @@
-<html>
+<html lang="en">
   <head>
-    <title>Scott Mathews's Website</title>
+    <meta charset="utf-8">
+    <title>Scott Mathews</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%221em%22 font-size=%2285%22>🧭</text></svg>">
   </head>
   <body>
     <header id="header">
-      <h1>Scott Mathews</h1>
-      <h3>Software Engineer at Microsoft</h3>
+      <h1 class="siteheadertitle">Scott Mathews 🧭</h1>
+      <h3 class="siteheadersubtitle">Software Engineer</h3>
     </header>
-    <main>
-      <section>
-          <h2>About Me</h2>
-          <p>
-          I graduated from Indiana University Bloomington with both a B.S. and M.S. in Computer Science in 2018, and joined Microsoft full time as a Software Engineer. With the Microsoft MSAI team in the Office organization, my work focuses on bridging the gap between advances in Machine Learning/Natural Language Processing/Speech Recognition and the existing state of Office products. From building voice-enabled services for Cortana, to integrating advances in natural language processing into Outlook's search capabilities, I have a breadth of experience creating and maintaining intelligence-based features for large audiences.
-          </p>
-      </section>
-      <section>
-      	<h2>Contact</h2>
-        <p>Email: smathewsx@gmail.com</p>
-        <a href="https://github.com/scott-mathews" target="_blank" rel="noopener">Github</a>
-        <a href="https://www.linkedin.com/in/scott-mathews-674b49121" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="http://scottmathe.ws/Resume.pdf" target="_blank">Download Resume (pdf)</a>
+    <nav class="navbar">
+      <div class="navlink"><a class="navlink-selected" href="">About Me &gt;</a></div>
+<!--      <div class="navlink"><a class="navlink-unselected">Featured Projects &gt;</a></div>
+      <div class="navlink"><a class="navlink-unselected">My Experience &gt;</a></div> -->
+      <br />
+      <div class="navlink"><a class="navlink-unselected" href="https://github.com/scott-mathews" target="_blank">Github</a> 🔗</div>
+      <div class="navlink"><a class="navlink-unselected" href="https://www.linkedin.com/in/scott-mathews-674b49121/" target="_blank">LinkedIn</a> 🔗</div>
+      <div class="navlink"><a class="navlink-unselected" href="Resume.pdf" target="_blank">Download Resume</a> 📃</div>
+    </nav>
+    <main class="main">
+      <section id="aboutme">
+        <img src="images/profile.jpg" height="200" width="200" class="circular">
+        <h2 class="sectionheader">About Me</h2>
+        <p>
+          Heya, I'm Scott Mathews! 
+          <br /><br />
+          I'm a Software Engineer at Microsoft. Nowadays I'm improving the Search experience Outlook Mobile Android. Previously I've worked on the Bing UX stack and Cortana services.
+          <br /><br />
+          I'm a graduate of Indiana University, with a Bachelors and Masters degrees in Computer Science. I loved learning about programming languages and AI/ML.
+          <br /><br />
+          I live in Redmond, Washington, and in my free time I love exploring the Pacific Northwest. I've also been working on my design skills, learning how to build basic web pages and apps in Figma.
+        </p>
       </section>
     </main>
   </body>
